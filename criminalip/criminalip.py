@@ -126,6 +126,9 @@ class CriminalIP:
 
 
     def ip_vpn(self, ip_address):
+        """
+        API for retrieving whether a specific IP address is being used as a VPN IP address.
+        """
 
         params={'ip':ip_address}
 
@@ -133,21 +136,29 @@ class CriminalIP:
 
 
     def ip_hosting(self, ip_address, full=False):
+        """
+        API for retrieving whether a specific IP address is being used as a hosting IP address.
 
-            params={'ip':ip_address,
+        """
+        params={'ip':ip_address,
                     'full': full}
 
-            return self.do_get(endpoint='v1/ip/hosting', params=params)
+        return self.do_get(endpoint='v1/ip/hosting', params=params)
 
 
     def ip_mal_info(self, ip_address):
-
+        """
+        This is an API for inquiring whether a specific IP address is a malicious IP address.
+        """
         params = {'ip':ip_address}
 
         return self.do_get(endpoint='v2/feature/ip/malicious-info', params=params)
 
 
     def ip_privacy_threats(self, ip_address):
+        """
+        API for detecting whether webcams or IoT devices are exposed on a specific IP address.
+        """
 
         params = {'ip':ip_address}
 
@@ -155,6 +166,9 @@ class CriminalIP:
 
 
     def is_safe_dns_server(self, ip_address):
+        """
+        API for retrieving whether the DNS service of a specific IP address is secure.
+        """
 
         params = {'ip':ip_address}
 
@@ -162,6 +176,9 @@ class CriminalIP:
 
 
     def ip_suspicious_info(self, ip_address):
+        """
+        API for retrieving data suspected to be malicious, which is associated with a specific IP address.
+        """
 
         params = {'ip':ip_address}
 
@@ -169,6 +186,9 @@ class CriminalIP:
 
 
     def banner_search(self, query, offset):
+        """
+        API for retrieving search results of banners using filters.
+        """
 
         final_result = {}
 
@@ -190,6 +210,10 @@ class CriminalIP:
 
 
     def banner_stats(self, query):
+        """
+        API for retrieving statistics of banner search results.
+
+        """
 
         params = {'query':query}
 
@@ -197,6 +221,9 @@ class CriminalIP:
 
 
     def domain_reports(self, query, offset):
+        """
+        This API retrieves a list of fully scanned domains based on a specific query. You can view the list of retrieved domains along with their scoring, country, and malicious domain information.
+        """
 
         params = {'query':query,
                   'offset':offset}
@@ -223,19 +250,29 @@ class CriminalIP:
     # /v1/domain/reports/personal is not implemented yet.
 
     def get_domain_reports_by_id(self, id):
-        
+        """
+        API for retrieving domain information for a specific scan_id.
+
+        """
 
         return self.do_get(endpoint=f'v1/domain/reports/{id}')
 
 
 
     def get_domain_status_by_id(self, id):
+        """
+        API for checking whether there is a scan history for a specific domain.
+
+        """
 
         return self.do_get(endpoint=f'/v1/domain/status/{id}')
 
 
 
     def domain_scan(self, domain):
+        """
+        API for determining the scan_id for initiating a new scan of a specific domain.
+        """
 
         payload = {'query':domain}
 
@@ -244,6 +281,9 @@ class CriminalIP:
 
 
     def domain_scan(self, domain):
+            """
+            API for retrieving security information such as phishing, vulnerabilities, and more for a specific domain in a confidential manner.
+            """
     
             payload = {'query':domain}
     
@@ -251,6 +291,10 @@ class CriminalIP:
 
 
     def domain_lite_report(self, query, offset):
+        """
+        This API retrieves a list of domains scanned with a specific query. You can view the list of retrieved domains and their scoring information.
+
+        """
 
         params = {'query':query, 'offset':offset}
 
@@ -274,6 +318,10 @@ class CriminalIP:
 
 
     def domain_lite_progress(self, scan_id):
+        """
+        This is an API for checking the progress of a Lite Scan.
+        The progress can be indicated by the following numbers: -1, -2, and 0 to 100, each representing a specific state.
+        """
 
         params = {'scan_id':scan_id}
 
@@ -282,11 +330,21 @@ class CriminalIP:
 
 
     def domain_lite_report_by_id(self, scan_id):
+        """
+        This API inquires about Domain Search Lite Scan results.
+        """
 
         return self.do_get(endpoint=f'/v1/domain/lite/report/{scan_id}')
 
 
     def domain_lite_scan(self, domain):
+        """
+        This is an API for requesting a Lite Scan for a new URL in Domain Search.
+It analyzes the threat information of the provided URL based on a quick collection of partial OSINT.
+The scanning process takes an average of 2 to 5 seconds and may have relatively lower accuracy compared to a Full Scan.
+
+
+        """
 
         payload = {'query':domain}
 
@@ -294,6 +352,12 @@ class CriminalIP:
 
 
     def domain_quick_view(self, domain):
+        """
+        This is an API for checking if a specific URL is connected to a legitimate website or a malicious website.
+It can be used to classify websites as either malicious or legitimate.
+
+
+        """
 
         params = {'domain':domain}
 
@@ -301,6 +365,10 @@ class CriminalIP:
 
 
     def domain_quick_mal_view(self, domain):
+        """
+        This is an API for checking if a specific URL is connected to a malicious website.
+It is recommended to use only to verify whether a website is malicious or not.
+        """
 
         params = {'domain':domain}
 
@@ -308,6 +376,10 @@ class CriminalIP:
 
 
     def domain_quick_trusted_view(self, domain):
+        """
+        This is an API for checking if a specific URL is connected to a legitimate website.
+It is recommended to use only to verify whether a website is legitimate or not.
+        """
 
         params = {'domain':domain}
 
@@ -316,6 +388,9 @@ class CriminalIP:
 
 
     def exploit_search(self, query, offset):
+        """
+        API for retrieving information on a specific CVE vulnerability.
+        """
 
         final_result = {}
 
@@ -338,6 +413,9 @@ class CriminalIP:
 
 
     def feed_status(self, key):
+        """
+        Query the current status (creation time, number of data, availability, and stale status) of 4 types of TI Feeds. A valid license key is required.
+        """
 
         params = {'key':key}
 
