@@ -66,7 +66,7 @@ Sign up or log into your account at [Criminal IP](https://www.criminalip.io/) an
 ### 2. Initialize the Client
 
 ```python
-from criminalip import CriminalIP
+from criminalip.criminalip import CriminalIP
 
 # Initialize the API client with your token
 client = CriminalIP(api_token="YOUR_CRIMINAL_IP_API_KEY")
