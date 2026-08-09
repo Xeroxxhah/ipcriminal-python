@@ -1,0 +1,18 @@
+# Development Environment
+env/
+venv/
+.venv/
+
+# Build Artifacts and Package Metadata
+dist/
+build/
+*.egg-info/
+
+# Python Cache
+__pycache__/
+*.pyc
+
+# Local Test Scripts (Optional)
+test.py
+
+*.exe
